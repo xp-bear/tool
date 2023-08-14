@@ -1,0 +1,81 @@
+@font-face {
+  font-family: xp;
+  src: url("http://cdn.xxoutman.cn/two.ttf");
+}
+@font-face {
+  font-family: consolas;
+  src: url("http://cdn.xxoutman.cn/one.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  padding: 0 60px;
+}
+.top {
+  text-align: center;
+  font-size: 30px;
+  padding: 10px 0;
+  color: #fff;
+  font-family: consolas;
+}
+.box {
+  display: flex;
+}
+.card {
+  width: 265px;
+  height: 225px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card img {
+  height: 225px;
+  object-fit: cover;
+  object-position: top center;
+}
+.card p {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: -60px;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: ease-in-out 0.3s;
+
+  font-family: consolas;
+  font-size: 16px;
+  padding: 0 10px;
+  letter-spacing: 0.05em;
+  line-height: 30px;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-weight: 600;
+  color: #333;
+}
+.mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: -999;
+}
+.mask video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+  padding: 0;
+}
