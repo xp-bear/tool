@@ -210,7 +210,11 @@
 
       colorVal.addEventListener("input", function (event) {
         // 获取输入框中的值
-        const inputValue = event.target.value; //输入框的值
+        let inputValue = event.target.value; //输入框的值
+
+        // 把中文,替换一下
+        inputValue = inputValue.replace(/，/g, ",");
+
         // 根据输入框的值判断删除按钮
         if (inputValue) {
           delSvg.style.opacity = 1;
