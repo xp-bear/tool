@@ -1,0 +1,371 @@
+.animationtada {
+  -webkit-animation: tada 1s 0.2s ease both;
+  -moz-animation: tada 1s 0.2s ease both;
+}
+@-webkit-keyframes tada {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  10%,
+  20% {
+    -webkit-transform: scale(0.9) rotate(-3deg);
+  }
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: scale(1.1) rotate(3deg);
+  }
+  40%,
+  60%,
+  80% {
+    -webkit-transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    -webkit-transform: scale(1) rotate(0);
+  }
+}
+@-moz-keyframes tada {
+  0% {
+    -moz-transform: scale(1);
+  }
+  10%,
+  20% {
+    -moz-transform: scale(0.9) rotate(-3deg);
+  }
+  30%,
+  50%,
+  70%,
+  90% {
+    -moz-transform: scale(1.1) rotate(3deg);
+  }
+  40%,
+  60%,
+  80% {
+    -moz-transform: scale(1.1) rotate(-3deg);
+  }
+  100% {
+    -moz-transform: scale(1) rotate(0);
+  }
+}
+
+.animationpulse {
+  -webkit-animation: pulse 0.5s 0.2s ease both infinite;
+  -moz-animation: pulse 0.5s 0.2s ease both infinite;
+}
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.015);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@-moz-keyframes pulse {
+  0% {
+    -moz-transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(1.015);
+  }
+  100% {
+    -moz-transform: scale(1);
+  }
+}
+// 卡片动效
+.animate-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.animate-card-84 {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    left: 5px;
+    right: 5px;
+    z-index: 2;
+    transform: scaleX(0);
+    transform-origin: 0 0;
+    transition: all 0.35s ease;
+    background-color: #000;
+  }
+
+  &::before {
+    top: 5px;
+    transition-delay: 0.28s;
+  }
+
+  &::after {
+    bottom: 5px;
+    transition-delay: 0s;
+  }
+
+  .animate-card {
+    &__layer {
+      width: 100%;
+      height: 100%;
+      transition: 0.5s;
+
+      & > img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &__sublayer {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      padding: 30px;
+      overflow: auto;
+      box-sizing: border-box;
+      text-align: center;
+      color: #000;
+      background-color: #fff;
+      opacity: 0;
+      transition: all 0.5s ease;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 5px;
+        bottom: 5px;
+        z-index: -1;
+        width: 4px;
+        transform: scaleY(0);
+        transform-origin: 0 0;
+        background-color: #000;
+        transition: all 0.35s ease;
+      }
+
+      &::before {
+        left: 5px;
+        transition-delay: 0.28s;
+      }
+
+      &::after {
+        right: 5px;
+        transition-delay: 0s;
+      }
+    }
+  }
+
+  &:hover {
+    &::before {
+      transition-delay: 0s;
+    }
+
+    &::after {
+      transition-delay: 0.28s;
+    }
+
+    &::before,
+    &::after {
+      transform: scale(1);
+    }
+
+    .animate-card {
+      &__layer {
+      }
+
+      &__sublayer {
+        opacity: 1;
+
+        &::before {
+          transition-delay: 0s;
+        }
+
+        &::after {
+          transition-delay: 0.28s;
+        }
+
+        &::before,
+        &::after {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+}
+
+// 文字阴影。
+.neon {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
+}
+// ------------------------------------------------
+@font-face {
+  font-family: xp;
+  src: url("http://cdn.xxoutman.cn/two.ttf");
+}
+@font-face {
+  font-family: consolas;
+  src: url("http://cdn.xxoutman.cn/one.ttf");
+}
+@font-face {
+  font-family: game;
+  src: url("http://cdn.xxoutman.cn/game.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  padding: 0 60px;
+}
+.top {
+  width: 500px;
+  height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+  font-family: consolas;
+  position: relative;
+  margin-top: 10px;
+  .flower {
+    position: relative;
+    top: -12px;
+    font-weight: 700;
+  }
+  span {
+    &:nth-child(2) {
+      font-size: 24px;
+      font-family: consolas;
+      text-shadow: 0px 0px 2px;
+    }
+  }
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: -999;
+}
+.mask video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 10px;
+  .box {
+    width: 250px;
+    height: 200px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    overflow: hidden;
+    img {
+      flex: 1;
+      object-fit: contain;
+      object-position: center;
+      transition: all 0.3s;
+      box-shadow: 0 0 3px #ccc;
+    }
+    span {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 16px;
+      color: #000;
+      font-weight: 700;
+    }
+    &:hover {
+      img {
+        object-fit: cover;
+        transition: all 0.3s;
+      }
+    }
+  }
+  .last {
+    order: -1; /* 设置order属性使其优先排列 */
+  }
+}
+.ka {
+  display: flex;
+  justify-content: center;
+}
+.area {
+  width: 100%;
+  height: 300px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-family: "game";
+  .list {
+    margin-right: 30px;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    width: 250px;
+    height: 365px;
+    background: url("./card.jpg") no-repeat;
+    background-size: cover;
+    position: relative;
+    .title {
+      width: 110px;
+      height: 21px;
+      line-height: 21px;
+      position: absolute;
+      top: 18px;
+      left: 17px;
+      background-image: linear-gradient(90deg, #148f7d, #5aaa9e, #148f7d);
+      padding-left: 4px;
+    }
+    .tu {
+      position: absolute;
+      top: 68px;
+      left: 32px;
+      width: 188px;
+      height: 190px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .footer {
+      width: 212px;
+      height: 68px;
+      line-height: 21px;
+      position: absolute;
+      top: 275px;
+      left: 20px;
+      background-image: linear-gradient(90deg, #c0d6bf, #c6d9c5, #c0d6bf);
+      padding: 0 3px;
+      font-size: 16px;
+    }
+  }
+}

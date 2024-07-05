@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <title>调色板</title>
+    <script src="http://at.alicdn.com/t/c/font_2783502_htn4mruvp8u.js"></script>
+    <link rel="shortcut icon" href="1.ico" type="image/x-icon" />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .box {
+      width: 100%;
+      height: 160px;
+      background: url("./1.jpg") no-repeat;
+      overflow: hidden;
+    }
+    .ipt {
+      width: 500px;
+      height: 40px;
+      font-family: consolas;
+
+      margin: 30px auto;
+      background-color: #ffffff;
+      opacity: 0.8;
+      border-radius: 5px;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 12px;
+    }
+    .box .ipt:hover {
+      opacity: 1;
+    }
+    .color {
+      width: 90%;
+      height: 80%;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      border: 0;
+      outline: none;
+      background-color: #ffffff;
+      opacity: 0.8;
+      padding-left: 8px;
+      margin-left: 1%;
+    }
+    .color:focus {
+      background-color: #e3e5e7;
+      border-radius: 5px;
+    }
+    .view {
+      position: relative;
+      box-shadow: 0 0 1px #ccc;
+    }
+    .title {
+      position: absolute;
+      width: 100%;
+      bottom: -55px;
+      font-family: consolas;
+      font-size: 12px;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+    }
+    .title > i {
+      font-style: normal;
+      width: 115%;
+      background-color: #ccc;
+      margin-top: 5px;
+      padding: 2px 2px 2px 4px;
+      border-radius: 3px;
+      cursor: pointer;
+
+      white-space: nowrap; /* 防止换行 */
+      overflow: hidden; /* 超出部分隐藏 */
+      text-overflow: ellipsis; /* 显示省略号 */
+    }
+  </style>
+
+  <style type="text/css">
+    .icon {
+      width: 32px;
+      height: 32px;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+      padding: 4px;
+    }
+    .icon:hover {
+      color: #111;
+      background-color: #e3e5e7;
+      border-radius: 5px;
+    }
+    @font-face {
+      font-family: xp;
+      src: url("http://cdn.xxoutman.cn/two.ttf");
+    }
+    @font-face {
+      font-family: consolas;
+      src: url("http://cdn.xxoutman.cn/one.ttf");
+    }
+  </style>
+
+  <body>
+    <div class="box">
+      <div class="ipt">
+        <input type="text" class="color" placeholder="请输入颜色值: " />
+        <svg class="icon del" aria-hidden="true" style="margin-left: -60px; z-index: 1; opacity: 0; transition: all 0.3s">
+          <use xlink:href="#icon-shanchu"></use>
+        </svg>
+
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-icon-"></use>
+        </svg>
+      </div>
+    </div>
+    <div style="width: 100%; display: grid; grid-template-columns: repeat(10, 100px); grid-column-gap: 20px; justify-content: center; align-content: center">
+      <span style="width: 100px; height: 100px; border-radius: 10px" class="view">
+        <span class="title"></span>
+      </span>
+      <span style="width: 100px; height: 100px; border-radius: 10px" class="view">
+        <span class="title"></span>
+      </span>
+      <span style="width: 100px; height: 100px; border-radius: 10px" class="view">
+        <span class="title"></span>
+      </span>
+      <span style="width: 100px; height: 100px; border-radius: 10px" class="view">
+        <span class="title"></span>
+      </span>
+      <span style="width: 100px; height: 100px; border-radius: 10px" class="view">
+        <span class="title"></span>
+      </span>
+      <span style="width: 100px; height: 100px; border-radius: 10px" class="view">
+        <span class="title"></span>
+      </span>
+      <span style="width: 100px; height: 100px; border-radius: 10px" class="view">
+        <span class="title"></span>
+      </span>
+      <span style="width: 100px; height: 100px; border-radius: 10px" class="view">
+        <span class="title"></span>
+      </span>
+      <span style="width: 100px; height: 100px; border-radius: 10px" class="view">
+        <span class="title"></span>
+      </span>
+      <span style="width: 100px; height: 100px; border-radius: 10px" class="view">
+        <span class="title"></span>
+      </span>
+    </div>
+    <script>
+      let colorVal = document.querySelector(".color");
+      let views = document.querySelectorAll(".view");
+      let titles = document.querySelectorAll(".title");
+      let delSvg = document.querySelector(".del");
+      const rgbpattern = /\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(0?\.\d)\s*/i; //10,10,10,0.6
+      const rgb2pattern = /\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*/i; //10,10,10
+      // 匹配16进制颜色值
+      const hexColorRegex = /^#?([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/;
+
+      // rgb转16进制
+      function rgbToHex(r, g, b, a = undefined) {
+        const componentToHex = (c) => {
+          const hex = c.toString(16);
+          return hex.length === 1 ? "0" + hex : hex;
+        };
+
+        const hexR = componentToHex(r);
+        const hexG = componentToHex(g);
+        const hexB = componentToHex(b);
+        if (a) {
+          return "#" + hexR + hexG + hexB + parseFloat(a) * 100;
+        }
+        return "#" + hexR + hexG + hexB;
+      }
+
+      // 16进制转rgb
+      function hexToRgb(hexColor) {
+        let opacity = null; //透明度
+        // 去除可能的 # 前缀
+        if (hexColor[0] == "#") {
+          hexColor = hexColor.replace("#", "");
+        }
+        if (hexColor.length == 8) {
+          opacity = hexColor.slice(-2);
+          console.log(opacity);
+        }
+
+        // #ff0000
+        // 如果是3位的16进制颜色值，扩展为6位
+        if (hexColor.length === 3) {
+          hexColor = hexColor
+            .split("")
+            .map((char) => char + char)
+            .join("");
+        }
+        // 提取红色、绿色和蓝色分量
+        const red = parseInt(hexColor.substr(0, 2), 16);
+        const green = parseInt(hexColor.substr(2, 2), 16);
+        const blue = parseInt(hexColor.substr(4, 2), 16);
+
+        // 返回RGB颜色值
+        return opacity !== null ? [red, green, blue, parseInt(opacity) / 100] : [red, green, blue];
+      }
+
+      colorVal.addEventListener("input", function (event) {
+        // 获取输入框中的值
+        let inputValue = event.target.value; //输入框的值
+
+        // 把中文,替换一下
+        inputValue = inputValue.replace(/，/g, ",");
+
+        // 根据输入框的值判断删除按钮
+        if (inputValue) {
+          delSvg.style.opacity = 1;
+        } else {
+          delSvg.style.opacity = 0;
+        }
+
+        if (rgbpattern.test(inputValue) | rgb2pattern.test(inputValue) | hexColorRegex.test(inputValue)) {
+          let res = null;
+          result = inputValue.match(rgbpattern) || inputValue.match(rgb2pattern) || inputValue.match(hexColorRegex);
+          // 16进制匹配
+          if (!result[0].includes(",")) {
+            res = hexToRgb(result[0]);
+            console.log(result[0]);
+            console.log(res);
+          } else {
+            //rgb匹配值
+            res = result[0].split(","); //[10,10,10]
+            console.log(res);
+          }
+
+          data = []; //rgb颜色值列表
+          hexColor = []; //16进制颜色值列表
+          for (let i = 0; i < 10; i++) {
+            let result = [];
+            for (let j = 0; j < res.length; j++) {
+              if (j < 3) {
+                let count = parseInt(res[j]) + 25 * i;
+                if (count > 255) {
+                  count = 255;
+                }
+                result.push(count);
+              } else {
+                result.push(res[j]);
+              }
+            }
+            // 处理颜色值
+            hexColor.push([...rgbToHex(...result)].join(""));
+            data.push(result);
+          }
+          // console.log(data);
+          // console.log(hexColor);
+          views.forEach((view, index) => {
+            titles[index].innerHTML = ""; //先清空DOM元素
+            // 创建一个新的 <i> 元素, // 设置新元素的内容
+            const iHtml = document.createElement("i");
+            iHtml.textContent = hexColor[index];
+
+            const RgbHtml = document.createElement("i");
+            RgbHtml.textContent = data[index].length == 4 ? "rgba(" + data[index].join(",") + ")" : "rgb(" + data[index].join(",") + ")";
+            // 找到现有的父节点并将新元素添加为其子节点
+            titles[index].appendChild(RgbHtml);
+            titles[index].appendChild(iHtml);
+            if (res.length == 3) {
+              view.style.backgroundColor = `rgb(${data[index][0]},${data[index][1]},${data[index][2]})`;
+            } else if (res.length == 4) {
+              view.style.backgroundColor = `rgba(${data[index][0]},${data[index][1]},${data[index][2]},${data[index][3]})`;
+            }
+          });
+        } else {
+          views.forEach((view, index) => {
+            titles[index].innerHTML = ""; //先清空DOM元素
+            view.style.backgroundColor = "transparent";
+          });
+        }
+      });
+
+      // 输入框获得焦点与失去焦点
+      colorVal.addEventListener("focus", function (e) {
+        if (e.target.value) {
+          delSvg.style.opacity = 1;
+        }
+      });
+      colorVal.addEventListener("blur", function () {
+        delSvg.style.opacity = 0;
+      });
+
+      // 删除按钮点击
+      delSvg.addEventListener("click", function () {
+        colorVal.value = ""; //清除输入框的值
+        colorVal.focus();
+        views.forEach((view, index) => {
+          titles[index].innerHTML = ""; //先清空DOM元素
+          view.style.backgroundColor = "transparent";
+        });
+      });
+
+      // 监听i标签双击选中事件
+      for (let i = 0; i < titles.length; i++) {
+        titles[i].addEventListener("dblclick", function (e) {
+          var range = document.createRange();
+          range.selectNodeContents(e.target);
+          var selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+        });
+      }
+    </script>
+  </body>
+</html>
