@@ -1,14 +1,3 @@
-// // 间隔动画
-// let topEle = document.querySelector(".top");
-
-// setInterval(() => {
-//   topEle.className = "top ";
-
-//   setTimeout(() => {
-//     topEle.className = "top animationtada";
-//   }, 1000);
-// }, 3000);
-
 // 移入动画
 let lists = document.querySelectorAll(".list");
 
