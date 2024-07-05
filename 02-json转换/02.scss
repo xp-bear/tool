@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: consolas;
+  src: url("http://cdn.xxoutman.cn/one.ttf");
+}
+.neon {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
+}
+
+// 滚动条
+.scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom right, #4d7fff 0%, #1a56ff 100%);
+  border-radius: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #ddd;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-button {
+  //   background-color: #4d7fff;
+  //   border-radius: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-button:hover {
+  background-color: #999999;
+  cursor: pointer;
+}
+
+// *****************************************************
+.banner {
+  width: 100%;
+  max-height: 100vh;
+  padding: 0 60px;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    .inner,
+    .out {
+      width: 710px;
+      height: 600px;
+      border: 1px dashed #ccc;
+      outline: none;
+      resize: none;
+      white-space: nowrap;
+      background-color: #dee1e6;
+      font-size: 16px;
+      font-family: consolas;
+      padding: 10px;
+      box-shadow: 0 0 3px #fff inset;
+      letter-spacing: 0.012em;
+      line-height: 1.5em;
+      overflow-x: scroll;
+      cursor: pointer;
+    }
+    img {
+      // flex: 1;
+      width: 110px;
+      height: 110px;
+      transform: rotate(-50deg);
+      z-index: 0;
+      box-sizing: border-box;
+    }
+    .copy {
+      width: 35px;
+      height: 35px;
+      position: absolute;
+      top: 0;
+      right: -35px;
+      background: url("./img/copy.jpg") no-repeat;
+      background-size: contain;
+      transition: all 0.3s;
+      &:hover {
+        transition: all 0.3s;
+        transform: rotate(360deg);
+      }
+    }
+  }
+  .btn {
+    .confirm {
+      width: 500px;
+      height: 200px;
+      background: url("./img/btn.png") no-repeat 50% 50%;
+      background-size: contain;
+      text-align: center;
+      text-align: center;
+      line-height: 200px;
+      color: #fff;
+      font-size: 24px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      margin: 0 auto;
+      user-select: none; /* 文字禁止被选中。 */
+    }
+  }
+}

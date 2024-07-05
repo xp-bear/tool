@@ -50,8 +50,8 @@
 }
 
 .animationpulse {
-  -webkit-animation: pulse 0.5s 0.2s ease both infinite;
-  -moz-animation: pulse 0.5s 0.2s ease both infinite;
+  -webkit-animation: pulse 1s 0.2s ease both infinite;
+  -moz-animation: pulse 1s 0.2s ease both infinite;
 }
 @-webkit-keyframes pulse {
   0% {
@@ -332,7 +332,7 @@ body {
   .card {
     width: 250px;
     height: 365px;
-    background: url("./card.jpg") no-repeat;
+    background: url("./img/card.jpg") no-repeat;
     background-size: cover;
     position: relative;
     .title {
@@ -348,7 +348,7 @@ body {
     .tu {
       position: absolute;
       top: 68px;
-      left: 32px;
+      left: 31px;
       width: 188px;
       height: 190px;
       img {
@@ -366,6 +366,16 @@ body {
       background-image: linear-gradient(90deg, #c0d6bf, #c6d9c5, #c0d6bf);
       padding: 0 3px;
       font-size: 16px;
+    }
+  }
+  .card1 {
+    background: url("./img/card1.jpg") no-repeat;
+    background-size: cover;
+    .title {
+      background-image: linear-gradient(90deg, #ab3f83, #b5578f, #ab3f83);
+    }
+    .footer {
+      background-image: linear-gradient(90deg, #dcc4d7, #dcc6d8, #dcc4d7);
     }
   }
 }
