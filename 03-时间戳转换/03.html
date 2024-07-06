@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="03.css" />
+    <link rel="shortcut icon" href="./img/2.ico" type="image/x-icon" />
+    <!-- 获取农历 -->
+    <script src="./chinese_lunar_calendar.min.js"></script>
+    <title>时间戳转换</title>
+  </head>
+  <body>
+    <div class="banner">
+      <!-- 现在时间 -->
+      <div class="now">
+        <h1 class="changecolor">当前北京时间</h1>
+        <div class="time">
+          <span>2024年7月6日 星期六</span>
+          <span>农历六月初一</span>
+          <span>00:00:00</span>
+        </div>
+      </div>
+      <!-- 处理时间 -->
+      <div class="detail">
+        <div class="change">
+          <input type="number" placeholder="请输入当前时间戳..." class="inchuo" />
+          <img src="./img/1.gif" alt="" draggable="false" />
+          <input type="text" class="inchuores" />
+        </div>
+
+        <!-- 时期转时间戳 -->
+        <div class="changetwo">
+          <div><input type="text" /><span>年</span></div>
+          <div><input type="text" /><span>月</span></div>
+          <div><input type="text" /><span>日</span></div>
+          <div><input type="text" /><span>时</span></div>
+          <div><input type="text" /><span>分</span></div>
+          <div><input type="text" /><span>秒</span></div>
+        </div>
+        <!-- 按钮 -->
+        <div class="btn-animate btn-animate__underline-from-center confirm" style="cursor: pointer; margin: 0 auto; font-weight: 700">转换成时间戳</div>
+        <div class="result">
+          <input type="text" class="timeres" />
+        </div>
+      </div>
+    </div>
+    <script src="./03.js"></script>
+  </body>
+</html>
