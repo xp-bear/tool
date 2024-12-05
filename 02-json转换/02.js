@@ -1,13 +1,13 @@
 let inner = document.querySelector(".inner");
 let out = document.querySelector(".out");
 inner.addEventListener("input", function (e) {
-  //   console.log(this.value); //实时监听的值
+  // console.log(this.value); //实时监听的值
 
   let arr = this.value.split("\n"); //先按行分割
   let obj = {}; //转化为一个对象
   arr.forEach((item) => {
-    let headarr = item.split(": ");
-    obj[headarr[0]] = headarr[1];
+    let headarr = item.split(":");
+    obj[headarr[0]] = headarr[1]?.trim(); //可选链
   });
   let originStr = JSON.stringify(obj);
   originStr = originStr.replace("{", "");

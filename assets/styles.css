@@ -198,18 +198,13 @@
 }
 
 @font-face {
-  font-family: xp;
-  src: url("http://cdn.xxoutman.cn/two.ttf");
-}
-
-@font-face {
   font-family: consolas;
-  src: url("http://cdn.xxoutman.cn/one.ttf");
+  src: url("https://xp-cdn-oss.oss-cn-wuhan-lr.aliyuncs.com/common/consolas.ttf");
 }
 
 @font-face {
   font-family: game;
-  src: url("http://cdn.xxoutman.cn/game.ttf");
+  src: url("https://xp-cdn-oss.oss-cn-wuhan-lr.aliyuncs.com/fonts/youxi3.ttf");
 }
 
 * {
@@ -326,6 +321,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   font-family: "game";
+  font-weight: 700;
 }
 
 .area .list {

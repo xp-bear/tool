@@ -208,17 +208,17 @@
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
 }
 // ------------------------------------------------
-@font-face {
-  font-family: xp;
-  src: url("http://cdn.xxoutman.cn/two.ttf");
-}
+// @font-face {
+//   font-family: xp;
+//   src: url("https://xp-cdn-oss.oss-cn-wuhan-lr.aliyuncs.com/common/one.ttf");
+// }
 @font-face {
   font-family: consolas;
-  src: url("http://cdn.xxoutman.cn/one.ttf");
+  src: url("https://xp-cdn-oss.oss-cn-wuhan-lr.aliyuncs.com/common/consolas.ttf");
 }
 @font-face {
   font-family: game;
-  src: url("http://cdn.xxoutman.cn/game.ttf");
+  src: url("https://xp-cdn-oss.oss-cn-wuhan-lr.aliyuncs.com/fonts/youxi3.ttf");
 }
 * {
   margin: 0;
@@ -324,6 +324,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   font-family: "game";
+  font-weight: 700;
   .list {
     margin-right: 30px;
     margin-bottom: 30px;
