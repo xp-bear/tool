@@ -399,3 +399,17 @@ body {
 .area .card2 .footer {
   background-image: linear-gradient(90deg, #e5c6b1, #ecd2c1, #e5c5b0);
 }
+
+.area .card3 {
+  background: url("./img/card3.jpg") no-repeat;
+  background-size: cover;
+}
+
+.area .card3 .title {
+  width: 120px;
+  background-image: linear-gradient(90deg, #2f6aaf, #3d72b6, #3c77b2);
+}
+
+.area .card3 .footer {
+  background-image: linear-gradient(90deg, #c1d3eb, #c0d4eb, #cadcf2);
+}
