@@ -314,11 +314,12 @@ body {
 }
 
 .area {
-  width: 100%;
-  height: 300px;
-  margin-top: 30px;
+  width: 1120px;
+  height: 100%;
+  margin: 30px auto 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  /* 更改为flex-start以从左边开始排列 */
   flex-wrap: wrap;
   font-family: "game";
   font-weight: 700;
